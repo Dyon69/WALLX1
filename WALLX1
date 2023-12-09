@@ -1,1 +1,55 @@
+-- Roblox Ultimate Noclip Exploit
+local player = game.Players.LocalPlayer
+local humanoid = player.Character:WaitForChild("Humanoid")
+local camera = workspace.CurrentCamera
+
+-- Set Walkspeed
+humanoid.WalkSpeed = 75
+
+-- Ultimate Noclip with Advanced Methods
+game:GetService("RunService").RenderStepped:Connect(function()
+    local direction = camera.CFrame.LookVector
+    local newPosition = player.Character.HumanoidRootPart.Position + direction * 10
+    player.Character:SetPrimaryPartCFrame(CFrame.new(newPosition))
+    
+    -- Additional Methods (customize as needed)
+    player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+    player.Character.HumanoidRootPart.RotVelocity = Vector3.new(0, 0, 0)
+    player.Character.Humanoid.PlatformStand = true
+
+    -- Advanced Features
+    player.Character.HumanoidRootPart.Size = Vector3.new(7, 7, 7)
+
+    -- New Methods (customize as needed)
+    player.Character.Humanoid:Move(Vector3.new(0, 0, 15))
+    player.Character.HumanoidRootPart.Color = Color3.new(0, 0, 1)
+    player.Character.HumanoidRootPart.Anchored = true
+
+    -- Even Better Methods (customize as needed)
+    player.Character.HumanoidRootPart.Material = Enum.Material.Neon
+    player.Character.HumanoidRootPart.Transparency = 0.2
+    player.Character.HumanoidRootPart.CanCollide = false
+    player.Character.HumanoidRootPart.BrickColor = BrickColor.new("Bright green")
+    player.Character.HumanoidRootPart:BreakJoints()
+
+    -- The Most Advanced Method (customize as needed)
+    player.Character.HumanoidRootPart.FormFactor = Enum.FormFactor.Custom
+
+    -- Additional Code within the if statement for Enhanced Noclip
+    if player.Character:FindFirstChild("AdvancedNoclip") then
+        local noclipPart = player.Character:FindFirstChild("AdvancedNoclip")
+        if noclipPart:IsA("BasePart") then
+            noclipPart.Transparency = 0.5
+            noclipPart.CanCollide = false
+
+            -- Additional Code for Walking Through Walls
+            local touchParts = noclipPart:GetTouchingParts()
+            for _, part in pairs(touchParts) do
+                if part:IsA("BasePart") and part.Parent:IsA("Model") and part.Parent:FindFirstChild("Humanoid") == nil then
+                    player.Character:SetPrimaryPartCFrame(CFrame.new(newPosition + direction * 2))
+                end
+            end
+        end
+    end
+end)
 
